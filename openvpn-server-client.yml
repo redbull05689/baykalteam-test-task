@@ -1,0 +1,19 @@
+---
+- hosts: ovserver
+  become: yes
+  become_method: sudo
+  roles:
+  - role: openvpn
+    openvpn_role: server
+    openvpn_host_cn: ovserver
+    openvpn_options:
+    - "keepalive 10 120"
+
+- hosts: ovclient
+  become: yes
+  become_method: sudo
+  roles:
+  - role: openvpn
+    openvpn_role: client
+    openvpn_host_cn: ovclient
+    openvpn_server_ip: ovserver
