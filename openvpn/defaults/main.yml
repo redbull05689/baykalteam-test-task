@@ -2,7 +2,7 @@
 openvpn_port: 1194
 openvpn_proto: udp
 openvpn_dev: tun
-openvpn_key_size: 1024
+openvpn_key_size: 512
 openvpn_cipher: AES-256-CBC
 
 openvpn_network: 10.8.0.0
@@ -18,7 +18,6 @@ openvpn_host_csr: "{{ openvpn_host_cn }}.csr"
 openvpn_host_crt: "{{ openvpn_host_cn }}.crt"
 openvpn_host_dh: "dh{{ openvpn_key_size }}.pem"
 
-home_path : /home/vagrant
 openvpn_local_key_path: keys
 openvpn_path: /etc/openvpn
 openvpn_config_path: "{{ openvpn_path }}/{{ openvpn_role }}"

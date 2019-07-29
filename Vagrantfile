@@ -5,11 +5,11 @@ home = ENV['HOME']
 MACHINES = {
   
   :ovclient => {
-        :box_name => "ubuntu/xenial64",
+        :box_name => "ubuntu/bionic64",
         :ip_addr => '192.168.11.151',
   } ,
   :ovserver => {
-        :box_name => "ubuntu/xenial64",
+        :box_name => "ubuntu/bionic64",
         :ip_addr => '192.168.11.150',
   }
 }
@@ -57,7 +57,7 @@ Vagrant.configure("2") do |config|
         sudo chmod 0600 /home/vagrant/.ssh/id_rsa
         sudo apt update
         sudo apt-get install ansible vim python-pip python-apt -y
-        pip install pyOpenSSL
+        sudo pip install pyOpenSSL
         SHELL
       when "ovserver"
       
@@ -82,6 +82,7 @@ Vagrant.configure("2") do |config|
           sudo apt-add-repository ppa:ansible/ansible
           sudo apt update
           sudo apt-get install ansible vim python-pip python-apt -y
+          sudo pip install pyOpenSSL
           sudo pip install netaddr
           sudo cp /vagrant/id_rsa /home/vagrant/.ssh/
           sudo chown vagrant:vagrant /home/vagrant/.ssh/id_rsa 

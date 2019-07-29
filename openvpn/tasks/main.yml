@@ -1,8 +1,12 @@
 ---
-- import_tasks: install.yml
-  become: true
-
 - import_tasks: ca.yml
+
+
+
+- name: Install openVPN (apt)
+  import_tasks: install_apt.yml
+  become: true
+  when: ansible_pkg_mgr == "apt"
 
 - import_tasks: key.yml
 
@@ -25,5 +29,5 @@
   become: true
   template:
     src: "{{ openvpn_role }}.conf.j2"
-    dest: "{{ openvpn_path }}/server.conf"
+    dest: "{{ openvpn_config_path }}/{{ openvpn_host_cn }}.conf"
   notify: restart openvpn

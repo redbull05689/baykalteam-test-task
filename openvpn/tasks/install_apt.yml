@@ -1,28 +1,20 @@
 ---
-
 - name: Install openssl
   apt:
     name: openssl
+    force_apt_get: true
   when: openvpn_role == 'server'
 
 - name: Install pip
-  become: true
   apt:
     name: python-pip
-
-- name: Install pip3
-  become: true
-  apt:
-    name: python3-pip
-
+    force_apt_get: true
 
 - name: Install pyOpenSSL
-  #become: true
-  ignore_errors: True
   pip:
     name: pyOpenSSL
 
 - name: Install openVPN
-  become: true
   apt:
     name: openvpn
+    force_apt_get: true
